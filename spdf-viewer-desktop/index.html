@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPDF Viewer</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <h1>🔒 SPDF Viewer</h1>
+        <span id="doc-id" class="doc-id"></span>
+      </div>
+      <div class="header-right">
+        <span id="user-status" class="user-status">No document loaded</span>
+      </div>
+    </header>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="open-file-btn" class="btn btn-primary">📁 Open SPDF</button>
+      <div class="nav-controls">
+        <button id="prev-page" class="btn" disabled>← Previous</button>
+        <span id="page-info"></span>
+        <button id="next-page" class="btn" disabled>Next →</button>
+      </div>
+      <div class="zoom-controls">
+        <button id="zoom-out" class="btn" disabled>−</button>
+        <span id="zoom-level">100%</span>
+        <button id="zoom-in" class="btn" disabled>+</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Database
+*.db
+*.sqlite
+
+# Uploads
+uploads/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Tauri build
+src-tauri/target/
+
+# Python cache
+*.pyo
+.pytest_cache/
+
+# Temporary files
+*.tmp
+update_admin.py
+key_gen_endpoint.py
