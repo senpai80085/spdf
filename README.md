@@ -25,17 +25,49 @@ Server runs at: **http://localhost:8000**
 ### 4. Create a License
 1. **Users** tab → **Add User** (create end-user)
 2. **Licenses** tab → **Add License**
-   - Enter User ID and Doc ID
-   - Click **Create License**
 3. Copy the license key (auto-copied)
 
-### 5. View SPDF (End User)
-```bash
+---
+
+## 🖥️ Build SPDF Viewer
+
+### Prerequisites (All Platforms)
+- Node.js 18+
+- Rust (https://rustup.rs)
+
+### Windows
+```powershell
+# Install build tools
+winget install Microsoft.VisualStudio.2022.BuildTools
+
 cd spdf-viewer-desktop
 npm install
 npm run tauri build
 ```
-Open `.spdf` file → Enter license key → Done!
+Output: `src-tauri/target/release/spdf-viewer.exe`
+
+### macOS
+```bash
+# Install Xcode CLI
+xcode-select --install
+
+cd spdf-viewer-desktop
+npm install
+npm run tauri build
+```
+Output: `src-tauri/target/release/bundle/dmg/SPDF Viewer.dmg`
+
+### Linux (Ubuntu/Debian)
+```bash
+# Install dependencies
+sudo apt update
+sudo apt install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+
+cd spdf-viewer-desktop
+npm install
+npm run tauri build
+```
+Output: `src-tauri/target/release/bundle/deb/spdf-viewer.deb`
 
 ---
 
@@ -59,14 +91,8 @@ spdf/
 ├── spdf-viewer-desktop/ # Tauri desktop viewer
 │   ├── src/             # Frontend
 │   └── src-tauri/       # Rust backend
-├── BUILD_INSTRUCTIONS.md
-└── QUICKSTART.md
+└── BUILD_INSTRUCTIONS.md
 ```
-
-## 📖 Documentation
-
-- [Quick Start Guide](QUICKSTART.md)
-- [Build Instructions](BUILD_INSTRUCTIONS.md)
 
 ## License
 
