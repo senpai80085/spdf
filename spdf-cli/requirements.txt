@@ -1,0 +1,8 @@
+# SPDF CLI Requirements
+
+# Core dependencies
+cryptography>=41.0.0
+requests>=2.31.0
+
+# PDF handling (optional, for verification)
+PyMuPDF>=1.23.0
