@@ -4,6 +4,7 @@ use aes_gcm::{
     aead::{Aead, KeyInit},
     Aes256Gcm, Nonce,
 };
+use base64::{engine::general_purpose, Engine as _};
 use ed25519_dalek::{Signature, Verifier, VerifyingKey};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -210,7 +211,7 @@ impl SpdfFile {
         let pem = pem.replace("-----END PUBLIC KEY-----", "");
         let pem = pem.replace("\n", "").replace("\r", "");
 
-        let decoded = base64::decode(&pem)
+        let decoded = general_purpose::STANDARD.decode(&pem)
             .map_err(|e| SpdfError::FormatError(format!("Invalid PEM base64: {}", e)))?;
 
         // Ed25519 public key in SubjectPublicKeyInfo format is 44 bytes,

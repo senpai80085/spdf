@@ -676,12 +676,18 @@
                         </td>
                         <td>${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : 'N/A'}</td>
                         <td>
+                            <button class="btn btn-success" onclick="downloadDoc('${doc.doc_id}')">⬇ Download</button>
                             <button class="btn btn-danger" onclick="deleteDoc('${doc.doc_id}')">Delete</button>
                         </td>
                     </tr>
                 `).join('');
             }
         }
+
+        async function downloadDoc(docId) {
+            window.location.href = `/admin/documents/${docId}/download?token=${token}`;
+        }
+
 
         async function loadDocsForDropdown() {
             const res = await api('/admin/documents');

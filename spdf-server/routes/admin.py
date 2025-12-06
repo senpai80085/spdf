@@ -203,10 +203,24 @@ async def generate_document_key(
 @router.get("/documents/{doc_id}/download")
 async def download_spdf(
     doc_id: str,
-    current_user: User = Depends(get_current_user),
+    token: str = None,
     db: Session = Depends(get_db)
 ):
-    """Download SPDF file."""
+    """Download SPDF file. Accepts token as query parameter for browser downloads."""
+    from jose import jwt, JWTError
+    from config import SECRET_KEY, ALGORITHM
+    
+    if not token:
+        raise HTTPException(status_code=401, detail="Token required")
+    
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        email = payload.get("sub")
+        if not email:
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
     document = db.query(Document).filter(Document.doc_id == doc_id).first()
     if not document:
         raise HTTPException(status_code=404, detail="Document not found")
@@ -216,6 +230,7 @@ async def download_spdf(
         filename=f"{doc_id}.spdf",
         media_type="application/octet-stream"
     )
+
 
 
 # ============ USER MANAGEMENT ============

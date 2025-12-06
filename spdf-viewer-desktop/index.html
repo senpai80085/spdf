@@ -36,6 +36,32 @@
       </div>
     </div>
 
+    <!-- Viewer Area -->
+    <div class="viewer-container">
+      <div id="watermark-overlay" class="watermark-overlay"></div>
+      <canvas id="pdf-canvas"></canvas>
+    </div>
+
+    <!-- Status Message -->
+    <div id="status-message" class="status-message"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+        <h2>Authentication Required</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="license-key">License Key</label>
+            <input type="text" id="license-key" required placeholder="Enter your license key" />
+          </div>
+          <div class="modal-actions">
+            <button type="button" id="cancel-login" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Unlock</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
 </body>
 
